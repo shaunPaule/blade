@@ -21,6 +21,10 @@ header height */
   padding-top: 65px;
 }
 
+.docs p{
+	letter-spacing:1px;
+}
+
 h1,
 h2,
 h3,
