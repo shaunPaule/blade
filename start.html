@@ -1,0 +1,2352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Blade,简洁强大的javaweb框架">
+    <meta name="author" content="biezhi">
+
+    <title>Blade - 简洁强大的javaweb框架</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+	<link href="./css/roboto.min.css" rel="stylesheet">
+    <link href="./css/material.min.css" rel="stylesheet">
+    <link href="./css/ripples.min.css" rel="stylesheet">
+	<!-- Custom styles for this template -->
+    <link href="./css/style.css" rel="stylesheet">
+    <link href="./plugin/highlight/styles/github.css" rel="stylesheet">
+	
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+	<!-- Fixed navbar -->
+    <nav class="navbar navbar-info navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Blade</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">入门</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">文档 <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="./docs/tutorials/index.html">教程</a></li>
+                <li><a href="./dart-by-example.html">Blade示例</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="./docs/index.html">开发者指南</a></li>
+                <li><a href="./apidocs/index.html">API参考</a></li>
+                <li><a href="#">语言规范</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">工具 <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">下载&nbsp;Blade</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Eclipse</a></li>
+                <li><a href="#">工具FAQ</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">资源 <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">示例代码</a></li>
+                <li><a href="#">性能</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Blade 短视频</a></li>
+              </ul>
+            </li>
+            <li><a href="#contact">支持</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="../navbar/"><i class="sprite-icon-social-twitter"></i>&nbsp;&nbsp;</a></li>
+            <li><a href="../navbar-static-top/"><i class="sprite-icon-social-gplus"></i>&nbsp;&nbsp;</a></li>
+            <li><a href="../navbar/"><i class="sprite-icon-social-weibo"><img src="./img/weibo.png"></i>&nbsp;&nbsp;</a></li>
+            <li class="active"><a href="./">置顶<span class="sr-only">(current)</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+	
+	
+<div class="container-page">
+  <div class="container">
+    <div class="container col-md-12 col-md-offset-0 sub-page">
+      <div class="has-permalinks">
+      <h1 id="web-app-">海盗们 停下来：编写个 Web App 吧</h1>
+
+<p>在该代码实验室中,
+你将从一个框架应用中创建一个海盗徽章生成器。
+该示例应用简单的介绍了一些 Dart 语言和库的特性。
+该代码实验室假设你具有其他编程语言的背景。</p>
+
+<div class="piratemap" style="min-height:325px">
+
+  <h2 id="section">步骤</h2>
+
+  <ul>
+    <li><a href="#set-up">Step 0: 设置环境</a></li>
+    <li><a href="#step-one">Step 1: 运行框架应用</a></li>
+    <li><a href="#step-two">Step 2: 添加一个输入框</a></li>
+    <li><a href="#step-three">Step 3: 添加一个按钮</a></li>
+    <li><a href="#step-four">Step 4: 创建一个类</a></li>
+    <li><a href="#step-five">Step 5: 保存到本地存储中</a></li>
+    <li><a href="#step-six">Step 6: 使用 HttpRequest 从 JSON 文件中读取姓名</a></li>
+    <li><a href="#step-seven">Step 7: 继续前行，了解 Dart 语言的更多特性</a></li>
+    <li><a href="#step-seven">Step 7: Build 该应用并作为 JavaScript 运行</a></li>
+    <li><a href="#whatnext">接下来干啥？</a></li>
+    <li><a href="#resources">总结和资源</a></li>
+  </ul>
+
+</div>
+
+<hr />
+
+<h2 id="set-up">Step 0: 设置环境</h2>
+
+<p>在该步骤中，你需要下载 Dart 并获取一些实例代码。</p>
+
+<h3 id="i-classfa-fa-anchor-i--dart"><i class="fa fa-anchor"> </i> 下载 Dart。</h3>
+
+<div class="trydart-step-details">
+  <p>如果你尚未下载 Dart，
+点击下面按钮下载。
+解压下载的文件得到一个名称为 <code>dart</code> 的目录。
+(更多信息请参考 <a href="/tools/download.html">下载界面</a>。)</p>
+
+  <!--style here is a hack to remove the arrow, which was only partially showing. -->
+  <div style="padding-left: 10px">
+<div class="editor download-buttons">
+
+  
+
+  <div class="windows downloads">
+    
+    <a data-bits="64" data-os="windows" data-build="integration" data-tool="editor" class="btn" href="http://storage.googleapis.com/dart-archive/channels/stable/release/latest/editor/darteditor-windows-x64.zip">
+      <button class="btn btn-primary btn-lg">
+        <i class="sprite-icon-download-btn"> </i>
+        下载 Dart + Editor (64-bit Windows)
+      </button>
+    </a>
+    <p></p>
+    <a data-bits="32" data-os="windows" data-build="integration" data-tool="editor" class="btn download-link" href="http://storage.googleapis.com/dart-archive/channels/stable/release/latest/editor/darteditor-windows-ia32.zip">
+      <button class="btn btn-primary btn-lg">
+        <i class="sprite-icon-download-btn"> </i>
+        下载 Dart + Editor (32-bit Windows)
+      </button>
+    </a>
+    
+  </div>
+
+  
+
+  <div class="macos downloads">
+    
+    <a data-bits="64" data-os="macos" data-build="integration" data-tool="editor" class="btn download-link" href="http://storage.googleapis.com/dart-archive/channels/stable/release/latest/editor/darteditor-macos-x64.zip">
+      <button class="btn btn-primary btn-lg">
+        <i class="sprite-icon-download-btn"> </i>
+        下载 Dart + Editor (Mac)
+      </button>
+    </a>
+    
+  </div>
+
+  
+
+  <div class="linux downloads">
+    
+    <a data-bits="64" data-os="linux" data-build="integration" data-tool="editor" class="btn" href="http://storage.googleapis.com/dart-archive/channels/stable/release/latest/editor/darteditor-linux-x64.zip">
+      <button class="btn btn-primary btn-lg">
+        <i class="sprite-icon-download-btn"> </i>
+        下载 Dart + Editor (64-bit Linux)
+      </button>
+    </a>
+    <p></p>
+    <a data-bits="32" data-os="linux" data-build="integration" data-tool="editor" class="btn download-link" href="http://storage.googleapis.com/dart-archive/channels/stable/release/latest/editor/darteditor-linux-ia32.zip">
+      <button class="btn btn-primary btn-lg">
+        <i class="sprite-icon-download-btn"> </i>
+        下载 Dart + Editor (32-bit Linux)
+      </button>
+    </a>
+    
+  </div>
+
+  
+
+  <div class="editor-current-version version">
+     当前 Dart 稳定版本：
+    <span class="editor-build-rev-stable">[计算中]</span>
+  </div>
+</div>
+
+</div>
+
+  <p class="os-choices">
+  Dart 工具
+  可以在最新的这些系统中使用
+  <span class="nowrap">
+<input type="radio" name="osChoices" id="windows" />
+<label class="os-choice" for="windows">Windows (Vista, 7, or 8)</label>,
+</span>
+
+<span class="nowrap">
+<input type="radio" name="osChoices" id="linux" checked="checked" />
+<label class="os-choice" for="linux">Linux</label>,
+</span> or
+
+<span class="nowrap">
+<input type="radio" name="osChoices" id="macos" />
+<label class="os-choice" for="macos">Mac</label>.
+</span>
+
+</p>
+</div>
+
+<h3 id="i-classfa-fa-anchor-i-"><i class="fa fa-anchor"> </i> 启动编辑器。</h3>
+
+<div class="trydart-step-details">
+  <p>打开 <code>dart</code> 目录，双击  <strong>DartEditor</strong>。</p>
+
+  <p><strong>有问题？遇到麻烦了？</strong> 请访问
+<a href="/tools/editor/troubleshoot.html">Dart 编辑器问题指南</a> 页面。</p>
+
+</div>
+
+<h3 id="i-classfa-fa-anchor-i--1"><i class="fa fa-anchor"> </i> 下载示例代码。</h3>
+
+<div class="trydart-step-details">
+  <p><a href="https://github.com/dart-lang/one-hour-codelab/archive/master.zip">下载</a>
+示例代码。
+解压文件后
+得到一个名称为 <code>one-hour-codelab</code> 的目录。</p>
+</div>
+
+<h3 id="i-classfa-fa-anchor-i--the-one-hour-codelab-"><i class="fa fa-anchor"> </i> 打开 the one-hour-codelab 示例应用</h3>
+
+<div class="trydart-step-details">
+  <p>在 Dart 编辑器中，
+使用菜单 <strong>File &gt; Open Existing Folder…</strong>
+打开 <code>one-hour-codelab</code> 目录。</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+    <p><img src="images/filesanddirs.png" alt="The files and directories in the piratebadge directory." /></p>
+
+    <div class="trydart-note">
+      <p><strong>注意：</strong>
+如果在文件名的坐标看到一个 <span style="color:red">红色的  X</span>，
+或者  <code>packages</code> 目录不存在，
+则该包没有正确的安装。
+右键点击 <code>pubspec.yaml</code> 并选择 <strong>Pub Get</strong> 来安装。</p>
+    </div>
+
+  </div> <div class="col-md-5">
+
+    <p><i class="fa fa-key key-header"> </i> <strong> 关键信息 </strong></p>
+
+    <ul>
+      <li>
+        <p><code>packages</code> 目录、 <code>pubspec.yaml</code> 和 <code>pubspec.lock</code> 文件是
+和项目依赖相关的文件。
+该项目已经设置了所有的依赖项了。
+Dart 编辑器自动安装需要的包。</p>
+      </li>
+      <li>
+        <p>几个带编号的目录包含了每个步骤中的完整代码。
+<code>1-blankbadge</code> 包含了框架应用代码，你将从这里开始。
+<code>6-piratebadge</code> 包含了最终版本的代码。</p>
+      </li>
+      <li>
+        <p><code>piratebadge.css</code> 文件提供
+了所有步骤中需要用到的 CSS 样式文件。
+在该示例中你无须修改该文件。</p>
+      </li>
+    </ul>
+
+    <p>  </p>
+
+  </div> </div>
+
+<hr />
+
+<h2 id="step-one">Step 1: 运行框架应用</h2>
+
+<p>在该步骤中，你打开源代码文件，
+熟悉下 Dart 和 HTML 代码，
+然后运行应用。</p>
+
+<h3 id="i-classfa-fa-anchor-i--1-blankbadge-"><i class="fa fa-anchor"> </i> 展开 1-blankbadge 目录。</h3>
+
+<div class="trydart-step-details">
+  <p>在 Dart 编辑器中，通过点击目录前面的小箭头
+<img src="images/wee-arrow.png" alt="wee arrow" /> 图标来
+展开 <code>1-blankbadge</code> 目录
+这个目录包含两个文件 ：<code>piratebadge.html</code> 和 <code>piratebadge.dart</code>。</p>
+</div>
+
+<h3 id="i-classfa-fa-anchor-i--2"><i class="fa fa-anchor"> </i> 打开文件。</h3>
+
+<div class="trydart-step-details">
+  <p>通过在 Dart 编辑器中双击 <code>piratebadge.html</code> 和 <code>piratebadge.dart</code>来
+打开这两个文件。</p>
+</div>
+
+<h3 id="i-classfa-fa-anchor-i--3"><i class="fa fa-anchor"> </i> 浏览代码。</h3>
+
+<div class="trydart-step-details">
+  <p>熟悉下框架应用的 Dart 和 HTML 代码。</p>
+</div>
+
+<div class="trydart-step-details">
+  <h4 id="piratebadgehtml">piratebadge.html</h4>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+      <pre class="prettyprint lang-html">&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Pirate badge&lt;/title&gt;
+    &lt;meta name=&quot;viewport&quot;
+          content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;piratebadge.css&quot;&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Pirate badge&lt;/h1&gt;
+    
+    <code class="nocode highlight">&lt;div class=&quot;widgets&quot;&gt;</code>
+      <code class="nocode highlight">TO DO: Put the UI widgets here.</code>
+    <code class="nocode highlight">&lt;/div&gt;</code>
+    &lt;div class=&quot;badge&quot;&gt;
+      &lt;div class=&quot;greeting&quot;&gt;
+        Arrr! Me name is
+      &lt;/div&gt;
+      &lt;div class=&quot;name&quot;&gt;
+        <code class="nocode highlight">&lt;span id=&quot;badgeName&quot;&gt; &lt;/span&gt;</code>
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    <code class="nocode highlight">&lt;script type=&quot;application/dart&quot; src=&quot;piratebadge.dart&quot;&gt;&lt;/script&gt;</code>
+    <code class="nocode highlight">&lt;script src=&quot;packages/browser/dart.js&quot;&gt;&lt;/script&gt;</code>
+  &lt;/body&gt;
+&lt;/html&gt;</pre>
+
+    </div>
+<div class="trydart-filename">piratebadge.html</div>
+
+</div> <div class="col-md-5">
+
+    <p><i class="fa fa-key key-header"> </i> <strong> 关键信息 </strong></p>
+
+    <ul>
+      <li>
+        <p>在该示例中，所有<code>piratebadge.html</code> 文件代码的改动
+都在带有 <code>widgets</code> class 标示的
+&lt;div&gt; 元素内完成。</p>
+      </li>
+      <li>
+        <p>在后面的步骤中，
+带有 <code>badgeName</code> 的 &lt;span&gt; 元素将有
+Dart 代码根据用户输入内容
+来动态更新。</p>
+      </li>
+      <li>
+        <p><code>piratebadge.dart</code> 脚本是该应用的主要代码文件。</p>
+      </li>
+      <li>
+        <p><code>packages/browser/dart.js</code> 脚本是一个启动脚本，
+负责启动 Dart VM 和兼容
+不支持 Dart 的浏览器。</p>
+      </li>
+    </ul>
+
+  </div> </div>
+
+<div class="trydart-step-details">
+  <h4 id="piratebadgedart">piratebadge.dart</h4>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+    <div class="trydart-step-details">
+      <pre class="prettyprint lang-dart"><code class="nocode highlight">void main() {
+  // Your app starts here.
+}
+</code></pre>
+    </div>
+    <div class="trydart-filename">piratebadge.dart</div>
+
+  </div> <div class="col-md-5">
+
+    <ul>
+      <li>
+        <p>该文件是该应用的主要代码文件。
+通过  <code>piratebadge.html</code> 文件中的 &lt;script&gt; 标签引用代码文件。</p>
+      </li>
+      <li>
+        <p><code>main()</code> 函数是代码入口。
+当应用启动的时候 Dart调用该函数。</p>
+      </li>
+    </ul>
+
+    <p>  </p>
+  </div> </div>
+
+<h3 id="i-classfa-fa-anchor-i--4"><i class="fa fa-anchor"> </i> 运行应用。</h3>
+
+<div class="trydart-step-details">
+  <p>要在 Dart 编辑器中运行该应用，只需要选择 <code>piratebadge.html</code>
+文件并点击  <strong>Run in Dartium</strong> 按钮即可。</p>
+
+  <p><img src="images/clickrun2.png" alt="Select Run in Dartium" /></p>
+
+  <p>Dart 编辑器将启动 _Dartium_来加载该应用，Dartium 是一个包含
+Dart 虚拟机的浏览器。该浏览器加载 <code>piratebadge.html</code> 文件。
+<code>piratebadge.html</code> 文件加载该应用并
+调用 <code>main()</code> 方法。</p>
+
+  <p>在左边会看到一个 TO DO 注释，
+在右边有个红底白字的徽章。</p>
+</div>
+
+<div class="trydart-step-details">
+  <iframe class="running-app-frame" style="height:220px;width:600px;" src="examples/1-blankbadge/piratebadge.html">
+</iframe>
+</div>
+
+<hr />
+
+<h2 id="step-two">Step 2: 添加一个输入框</h2>
+
+<div class="trydart-note">
+  <p><strong>提示：</strong> 在该代码实验室中，
+你可以继续编辑在<code>1-blankbadge</code>中的文件。
+你可以和其他目录的文件比较来确认你的修改，
+如果遇到问题也可以恢复这些文件。</p>
+</div>
+
+<p>在该步骤中，将在应用中添加一个输入框。
+当用户在输入框中输入的时候，
+Dart 代码使用输入的值来更新徽章的内容。</p>
+
+<h3 id="i-classfa-fa-anchor-i--piratebadgehtml"><i class="fa fa-anchor"> </i> 编辑 piratebadge.html.</h3>
+
+<div class="row"> <div class="col-md-7">
+
+    <div class="trydart-step-details">
+
+      <p>Add the &lt;input&gt; tag to the HTML code
+within the <code>widgets</code> &lt;div&gt;.</p>
+
+      <pre class="prettyprint lang-html">...
+&lt;div class=&quot;widgets&quot;&gt;
+<code class="nocode highlight">  &lt;div&gt;
+    &lt;input type=&quot;text&quot; id=&quot;inputName&quot; maxlength=&quot;15&quot;&gt;
+  &lt;/div&gt;</code>
+&lt;/div&gt;
+...</pre>
+    </div>
+
+    <div class="trydart-filename">piratebadge.html</div>
+
+  </div> <div class="col-md-5">
+
+    <p><i class="fa fa-key key-header"> </i> <strong> 关键信息 </strong></p>
+
+    <ul>
+      <li>该输入框的 ID 为 <code>inputName</code>。
+Dart 使用 CSS 选择器，例如 <code>#inputName</code>，
+来从 DOM 中查询元素。</li>
+    </ul>
+
+    <p>  </p>
+
+  </div> </div>
+
+<h3 id="i-classfa-fa-anchor-i--piratebadgedart"><i class="fa fa-anchor"> </i> 编辑 piratebadge.dart.</h3>
+
+<div class="trydart-step-details">
+
+  <p>在代码文件顶部
+导入 <code>dart:html</code>
+(在版权信息下方)。</p>
+
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+
+      <pre class="prettyprint lang-dart"><code class="nocode highlight">import 'dart:html';</code></pre>
+    </div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>
+        <p>该导入语句将导入 dart:html 包中的所有类和资源，
+ 提供了 HTML 元素和访问 DOM 的能力。</p>
+      </li>
+      <li>
+        <p>Dart 编辑器非常乐意的提醒你 导入的内容没有使用。
+ 先不要关心它。在下一步将修复该问题。</p>
+      </li>
+    </ul>
+
+  </div> </div>
+
+<div class="trydart-step-details">
+
+  <hr />
+
+  <p>在输入框中添加一个监听器来处理输入事件。</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+
+      <pre class="prettyprint lang-dart">void main() {
+  <code class="nocode highlight">querySelector('#inputName').onInput.listen(updateBadge);</code>
+}</pre>
+    </div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>
+        <p>在 dart:html 中定义的 <code>querySelector()</code> 函数从 DOM 中获取
+一个元素。
+这里的代码使用 ID <code>#inputName</code> 
+来查询输入框。</p>
+      </li>
+      <li>
+        <p><code>onInput</code> 注册监听输入事件的监听器。</p>
+      </li>
+      <li>
+        <p>当用户点击键盘的时候触发输入事件。</p>
+      </li>
+      <li>
+        <p>你可以使用单引号或者双引号来创建字符串。</p>
+      </li>
+      <li>
+        <p>Dart 编辑器提示你该函数不存在。
+现在就创建该函数。</p>
+      </li>
+    </ul>
+
+  </div> </div>
+
+<div class="trydart-step-details">
+
+  <hr />
+
+  <p>把事件监听函数实现为顶部（top-level）函数。</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+
+      <pre class="prettyprint lang-dart">...
+
+<code class="nocode highlight">void updateBadge(Event e) { 
+  querySelector('#badgeName').text = e.target.value;
+}</code></pre>
+    </div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>
+        <p>该函数从输入框中的值设置 <code>badgeName</code> 元素的值。</p>
+      </li>
+      <li>
+        <p>可以发现 <code>updateBadge()</code> 是一个事件处理函数，
+其参数为一个 <code>Event</code> 对象。</p>
+      </li>
+      <li>
+        <p>产生输入事件的元素为 <code>e.target</code> 对象。</p>
+      </li>
+      <li>
+        <p><code>as</code> 关键字把 <code>e.target</code> 转换为一个
+<code>InputElement</code> ，这样 Dart 编辑器就不会报提醒了。</p>
+      </li>
+    </ul>
+
+    <p>  </p>
+
+  </div> </div>
+
+<h3 id="i-classfa-fa-anchor-i--5"><i class="fa fa-anchor"> </i> 运行应用。</h3>
+
+<div class="trydart-step-details">
+
+  <p>通过菜单 <strong>File &gt; Save All</strong> 保存修改的内容。</p>
+
+  <p>右键点击 <code>piratebadge.html</code> 文件并选择 <strong>Run in Dartium</strong> 菜单
+运行应用。</p>
+
+  <p>比较你的应用和如下是否一样。</p>
+
+  <p>在输入框中输入内容。</p>
+
+  <iframe class="running-app-frame" style="height:220px;width:550px;" src="examples/2-inputnamebadge/piratebadge.html">
+</iframe>
+
+  <h4 id="section-1">问题？</h4>
+
+  <p>如果遇到问题，把你修改的代码和 <code>2-inputbadge</code> 中的代码比较一下。</p>
+
+  <ul>
+    <li>
+      <p><a href="https://github.com/dart-lang/one-hour-codelab/blob/master/web/2-inputnamebadge/piratebadge.html">piratebadge.html</a></p>
+    </li>
+    <li>
+      <p><a href="https://github.com/dart-lang/one-hour-codelab/blob/master/web/2-inputnamebadge/piratebadge.dart">piratebadge.dart</a></p>
+    </li>
+  </ul>
+</div>
+
+<hr />
+
+<h2 id="step-three">Step 3: 添加一个按钮</h2>
+
+<p>在该步骤中，将在应用中添加一个按钮。
+当输入框中没有内容的时候按钮启用。
+当用户点击按钮的时候，
+应用把 <code>Anne Bonney</code> 这个名字输入到徽章中。</p>
+
+<h3 id="i-classfa-fa-anchor-i--piratebadgehtml-1"><i class="fa fa-anchor"> </i> 编辑 piratebadge.html.</h3>
+
+<div class="trydart-step-details">
+  <p>在输入框下方添加 &lt;button&gt; 标签。</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-html">...
+&lt;div class=&quot;widgets&quot;&gt;
+  &lt;div&gt;
+    &lt;input type=&quot;text&quot; id=&quot;inputName&quot; maxlength=&quot;15&quot;&gt;
+  &lt;/div&gt;
+<code class="nocode highlight">  &lt;div&gt;
+    &lt;button id=&quot;generateButton&quot;&gt;Aye! Gimme a name!&lt;/button&gt;
+  &lt;/div&gt;</code>
+&lt;/div&gt;
+...</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.html</div>
+
+</div> <div class="col-md-5">
+
+    <p><i class="fa fa-key key-header"> </i> <strong> 关键信息 </strong></p>
+
+    <ul>
+      <li>该按钮有个 ID <code>generateButton</code> ，这样
+Dart 代码就可以通过 ID 获取按钮。</li>
+    </ul>
+
+  </div> </div>
+
+<h3 id="i-classfa-fa-anchor-i--piragebadgedart"><i class="fa fa-anchor"> </i> 编辑 piragebadge.dart.</h3>
+
+<div class="trydart-step-details">
+  <p>在 import 语句下方，定义一个顶级 <code>ButtonElement</code> 变量。</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">import 'dart:html';
+
+<code class="nocode highlight">ButtonElement genButton;</code></pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>
+        <p>顶级（Top-level）变量是库级别的名称。</p>
+      </li>
+      <li>
+        <p>ButtonElement 是 dart:html 库中
+众多 DOM 元素中的一个。</p>
+      </li>
+    </ul>
+
+    <p>  </p>
+
+  </div> </div>
+
+<div class="trydart-step-details">
+
+  <hr />
+
+  <p>使用一个事件处理函数把按钮联系起来。</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">void main() {
+  querySelector('#inputName').onInput.listen(updateBadge);
+  <code class="nocode highlight">genButton = querySelector('#generateButton');
+  genButton.onClick.listen(generateBadge);</code>
+}</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li><code>onClick</code> 注册一个鼠标点击事件。</li>
+    </ul>
+
+    <p>  </p>
+
+  </div> </div>
+
+<div class="trydart-step-details">
+
+  <hr />
+
+  <p>添加一个顶级函数来修改徽章的名字。</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">...
+
+<code class="nocode highlight">void setBadgeName(String newName) {
+  querySelector('#badgeName').text = newName;
+} </code></pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>该函数使用新的名字修改徽章内容。</li>
+    </ul>
+
+    <p>  </p>
+
+  </div> </div>
+
+<div class="trydart-step-details">
+
+  <hr />
+
+  <p>实现按钮的点击处理函数。</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">...
+
+<code class="nocode highlight">void generateBadge(Event e) {
+  setBadgeName('Anne Bonney');
+}</code></pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>该函数设置徽章的名字为 <code>Anne Bonney</code>。</li>
+    </ul>
+
+    <p>  </p>
+
+  </div> </div>
+
+<div class="trydart-step-details">
+
+  <hr />
+
+  <p>修改 <code>updateBadge()</code> 函数来调用 <code>setBadgeName()</code>函数。</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">void updateBadge(Event e) {
+<code class="nocode highlight">  String inputName = </code>(e.target as InputElement).value;
+<code class="nocode highlight">  setBadgeName(inputName);</code>
+}</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>设置输入框的值为本地字符串。</li>
+    </ul>
+
+  </div></div>
+
+<div class="trydart-step-details">
+
+  <hr />
+
+  <p>在 <code>updateBadge()</code> 中添加一个 if-else 骨架代码。</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">void updateBadge(Event e) {
+  String inputName = (e.target as InputElement).value;
+  setBadgeName(inputName);
+<code class="nocode highlight">  if (inputName.trim().isEmpty) {
+    // To do: add some code here.
+  } else {
+    // To do: add some code here.
+  }</code>
+}</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>
+        <p><code>String</code> 类有一些用来处理字符串数据的
+函数和属性，
+例如 <code>trim()</code> 和 <code>isEmpty</code>。</p>
+      </li>
+      <li>
+        <p>String 类在 <code>dart:core</code> 库中定义，
+每个 Dart 程序中都会自动导入该库。</p>
+      </li>
+      <li>
+        <p>Dart 具有通用的编程语言概念，例如  <code>if</code>-<code>else</code>。</p>
+      </li>
+    </ul>
+
+  </div></div>
+
+<div class="trydart-step-details">
+
+  <hr />
+
+  <p>现在修改 if-else 语句来根据条件改变按钮的状态。</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">void updateBadge(Event e) {
+  String inputName = (e.target as InputElement).value;
+  setBadgeName(inputName);
+  if (inputName.trim().isEmpty) {
+    <code class="nocode highlight">genButton..disabled = false
+             ..text = 'Aye! Gimme a name!';</code>
+  } else {
+    <code class="nocode highlight">genButton..disabled = true
+             ..text = 'Arrr! Write yer name!';</code>
+  }
+}</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>
+        <p>级联操作符 (<code>..</code>) 可以让你在同一个对象上
+操作多个函数和属性。</p>
+      </li>
+      <li>
+        <p><code>updateBadge()</code> 代码用级联操作符来设置
+按钮的两个属性。
+和下面的代码具有同样的效果。</p>
+      </li>
+    </ul>
+
+    <pre>
+genButton.disabled = false;
+genButton.text = 'Aye! Gimme a name!';
+</pre>
+
+  </div></div>
+
+<h3 id="i-classfa-fa-anchor-i--6"><i class="fa fa-anchor"> </i> 运行应用。</h3>
+
+<div class="trydart-step-details">
+
+  <p>使用菜单 <strong>File &gt; Save All</strong> 保存文件。</p>
+
+  <p>右键点击 <code>piratebadge.html</code> 文件并选择 <strong>Run in Dartium</strong> 菜单
+运行应用。</p>
+
+  <p>比较你的应用和如下是否一样。</p>
+
+  <p>在输入框中输入文字。
+从输入框中删除文字。
+点击按钮。</p>
+
+  <iframe class="running-app-frame" style="height:220px;width:550px;" src="examples/3-buttonbadge/piratebadge.html">
+</iframe>
+
+  <h4 id="section-2">问题？</h4>
+
+  <p>如果遇到问题，把你的代码和 <code>3-buttonbadge</code>中的代码比较一下。</p>
+
+  <ul>
+    <li>
+      <p><a href="https://github.com/dart-lang/one-hour-codelab/blob/master/web/3-buttonbadge/piratebadge.html">piratebadge.html</a></p>
+    </li>
+    <li>
+      <p><a href="https://github.com/dart-lang/one-hour-codelab/blob/master/web/3-buttonbadge/piratebadge.dart">piratebadge.dart</a></p>
+    </li>
+  </ul>
+
+</div>
+
+<hr />
+
+<h2 id="step-four">Step 4: 创建 PirateName 类</h2>
+
+<p>在该步骤中，你只需要修改 Dart 代码。
+创建一个代表海盗名称的类。
+完成后，该类随即的
+从一个列表中选择名字和称呼。
+或者你也可以在构造函数
+中提供名字和称呼。</p>
+
+<h3 id="i-classfa-fa-anchor-i--piratebadgedart-1"><i class="fa fa-anchor"> </i> 编辑 piratebadge.dart.</h3>
+
+<div class="trydart-step-details">
+  <p>在文件顶部添加一个 import 语句。</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">import 'dart:html';
+
+<code class="nocode highlight">import 'dart:math' show Random;</code></pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <p><i class="fa fa-key key-header"> </i> <strong> 关键信息 </strong></p>
+
+    <ul>
+      <li>
+        <p>使用 <code>show</code> 关键字来
+导入你仅仅需要的类、函数、和属性。</p>
+      </li>
+      <li>
+        <p><code>Random</code> 提供了一个随机数生成器。</p>
+      </li>
+    </ul>
+
+  </div></div>
+
+<div class="trydart-step-details">
+
+  <hr />
+
+  <p>在文件底部定义一个类。</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">...
+
+<code class="nocode highlight">class PirateName {
+}</code></pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>这里定义了类的名字。</li>
+    </ul>
+
+  </div></div>
+
+<div class="trydart-step-details">
+
+  <hr />
+
+  <p>创建一个类级别（静态）的 Random 对象。</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">class PirateName {
+  <code class="nocode highlight">static final Random indexGen = new Random();</code>
+}</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>
+        <p><code>static</code> 定义一个类变量。这样，
+随机数生成器将在所有该类的实例
+中共享。</p>
+      </li>
+      <li>
+        <p>Dart 编辑器用斜体字显示静态变量。</p>
+      </li>
+      <li>
+        <p>使用 <code>new</code> 来调用构造函数。</p>
+      </li>
+    </ul>
+
+  </div></div>
+
+<div class="trydart-step-details">
+
+  <hr />
+
+  <p>在类中添加两个实例变量，
+一个记录名字，一个记录称呼。</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">class PirateName {
+  static final Random indexGen = new Random();
+<code class="nocode highlight">  String _firstName;
+  String _appellation;</code>
+}</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>私有变量用 (<code>_</code>) 开始。</li>
+    </ul>
+
+  </div></div>
+
+<div class="trydart-step-details">
+
+  <hr />
+
+  <p>在类中创建两个静态的列表，
+用来保存一些名字和称呼。</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">class PirateName {
+  ...
+<code class="nocode highlight">  static final List names = [
+    'Anne', 'Mary', 'Jack', 'Morgan', 'Roger',
+    'Bill', 'Ragnar', 'Ed', 'John', 'Jane' ];
+  static final List appellations = [
+    'Black','Damned', 'Jackal', 'Red', 'Stalwart', 'Axe',
+    'Young', 'Old', 'Angry', 'Brave', 'Crazy', 'Noble'];</code>
+}</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>
+        <p><code>final</code> 修饰的变量无法修改。</p>
+      </li>
+      <li>
+        <p>Dart 语言原生支持列表，这里通过
+列表字面字符串来创建列表。</p>
+      </li>
+      <li>
+        <p><code>List</code> 类提供了列表的相关API。</p>
+      </li>
+    </ul>
+
+  </div></div>
+
+<div class="trydart-step-details">
+
+  <hr />
+
+  <p>定义类的构造函数。</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">class PirateName {
+  ...
+<code class="nocode highlight">  PirateName({String firstName, String appellation}) {
+    if (firstName == null) {
+      _firstName = names[indexGen.nextInt(names.length)];
+    } else {
+      _firstName = firstName;
+    }
+    if (appellation == null) {
+      _appellation = appellations[indexGen.nextInt(appellations.length)];
+    } else {
+      _appellation = appellation;
+    }
+  }</code>
+}</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>
+        <p>构造函数名字和类名一样。</p>
+      </li>
+      <li>
+        <p>在花括号 (<code>{</code> 和 <code>}</code>) 之间的参数是
+可选的、带有名称的参数。</p>
+      </li>
+      <li>
+        <p><code>nextInt()</code> 函数从随机数生成器中
+获取一个新的随机整数。</p>
+      </li>
+      <li>
+        <p>使用方括号 (<code>[</code> 和 <code>]</code>) 来索引列表元素。</p>
+      </li>
+      <li>
+        <p>List 的 <code>length</code> 变量用来返回列表的大小。</p>
+      </li>
+      <li>
+        <p>这里使用一个随机位置来获取列表元素。</p>
+      </li>
+    </ul>
+
+  </div> </div>
+
+<div class="trydart-step-details">
+
+  <hr />
+
+  <p>添加一个获取海盗名字的函数。</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">class PirateName {
+  ...
+<code class="nocode highlight">  String get pirateName =&gt;
+    _firstName.isEmpty ? '' : '$_firstName the $_appellation';</code>
+}</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div><div class="col-md-5">
+
+    <ul>
+      <li>
+        <p>Getters 是用来读取示例变量的特殊函数。</p>
+      </li>
+      <li>
+        <p>三元操作法 <code>?:</code> 是 if-then-else 语句的缩写形式。</p>
+      </li>
+      <li>
+        <p>字符串插值
+(<code>'$_firstName the $_appellation'</code>) 简化了
+从对象值创建字符串。</p>
+      </li>
+      <li>
+        <p>胖箭头 (<code> =&gt; expr; </code>) 语法是 <code>{ return expr; }</code>的缩写形式。</p>
+      </li>
+    </ul>
+
+  </div></div>
+
+<div class="trydart-step-details">
+
+  <hr />
+
+  <p>修改 <code>setBadgeName()</code> 函数使用 PirateName 对象来替代 String 参数。</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">void setBadgeName(<code class="nocode highlight">PirateName</code> newName) {
+  querySelector('#badgeName').text = newName<code class="nocode highlight">.pirateName</code>;
+}</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div><div class="col-md-5">
+
+    <ul>
+      <li>这里调用 PirateName 的 Get 函数来获取字符串。</li>
+    </ul>
+
+  </div></div>
+
+<div class="trydart-step-details">
+
+  <hr />
+
+  <p>修改 <code>updateBadge()</code> 函数，根据输入框中的值来创建一个  PirateName 对象。</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">void updateBadge(Event e) {
+  String inputName = (e.target as InputElement).value;
+  
+  <code class="nocode highlight">setBadgeName(new PirateName(firstName: inputName));</code>
+  ...
+}</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div><div class="col-md-5">
+
+    <ul>
+      <li>这里用一个可选的参数调用构造函数。</li>
+    </ul>
+
+  </div></div>
+
+<div class="trydart-step-details">
+
+  <hr />
+
+  <p>修改 <code>generateBadge()</code> ，创建一个 PirateName 对象来替代 <code>Anne Bonney</code>。</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">void generateBadge(Event e) {
+  setBadgeName(<code class="nocode highlight">new PirateName()</code>);
+}</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div><div class="col-md-5">
+
+    <ul>
+      <li>这里，调用构造函数的时候没有传递参数。</li>
+    </ul>
+
+  </div></div>
+
+<h3 id="i-classfa-fa-anchor-i--7"><i class="fa fa-anchor"> </i> 运行应用。</h3>
+
+<div class="trydart-step-details">
+
+  <p>使用菜单 <strong>File &gt; Save All</strong> 保存文件。</p>
+
+  <p>右键点击 <code>piratebadge.html</code> 文件并选择 <strong>Run in Dartium</strong> 菜单
+运行应用。</p>
+
+  <p>比较你的应用和如下是否一样。</p>
+
+  <p>在输入框中输入文本。
+从输入框中删除文本。
+点击按钮。</p>
+
+  <iframe class="running-app-frame" style="height:220px;width:550px;" src="examples/4-classbadge/piratebadge.html">
+</iframe>
+
+  <h4 id="section-3">问题？</h4>
+
+  <p>如果你遇到了任何问题，可以和 <code>4-classbadge</code>步中的代码比较来发现问题。</p>
+
+  <ul>
+    <li>
+      <p><a href="https://github.com/dart-lang/one-hour-codelab/blob/master/web/4-classbadge/piratebadge.html">piratebadge.html</a></p>
+    </li>
+    <li>
+      <p><a href="https://github.com/dart-lang/one-hour-codelab/blob/master/web/4-classbadge/piratebadge.dart">piratebadge.dart</a></p>
+    </li>
+  </ul>
+
+</div>
+
+<hr />
+
+<h2 id="step-five">Step 5: 保存到本地存储中</h2>
+
+<p>在该步骤中，将会把每次改变后的徽章名字
+保存到本地中，这样可以记住每次的修改。
+当重新打开该应用的时候，
+会从本地保存的数据中初始化徽章名字。</p>
+
+<h3 id="i-classfa-fa-anchor-i--piratebadgedart-2"><i class="fa fa-anchor"> </i> 编辑 piratebadge.dart.</h3>
+
+<div class="trydart-step-details">
+  <p>从 <code>dart:convert</code> 库中导入 JSON 转换器。</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">import 'dart:html';
+import 'dart:math' show Random;
+<code class="nocode highlight">
+import 'dart:convert' show JSON;</code></pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <p><i class="fa fa-key key-header"> </i> <strong> 关键信息 </strong></p>
+
+    <ul>
+      <li><code>JSON</code> 提供了常用操作 JSON 数据的功能。</li>
+    </ul>
+
+  </div> </div>
+
+<div class="trydart-step-details">
+
+  <hr />
+
+  <p>在 PirateName 类中添加一个命名构造函数。</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">class PirateName {
+  ...
+<code class="nocode highlight">  PirateName.fromJSON(String jsonString) {
+    Map storedName = JSON.decode(jsonString);
+    _firstName = storedName['f'];
+    _appellation = storedName['a'];
+  }</code>
+}</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>
+        <p>该构造函数从 JSON 字符串中创建一个 PirateName 对象。</p>
+      </li>
+      <li>
+        <p><code>PirateName.fromJson</code> 是一个命名构造函数。</p>
+      </li>
+      <li>
+        <p><code>JSON.decode()</code> 解析 JSON 字符串，并创建一个 Dart 对象。</p>
+      </li>
+      <li>
+        <p>海盗的名字解析到一个 <code>Map</code> 对象中。</p>
+      </li>
+    </ul>
+
+  </div> </div>
+
+<div class="trydart-step-details">
+
+  <hr />
+
+  <p>在 PirateName 类中添加一个
+获取海盗名字 JSON 字符串的 Getter 函数。</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">class PirateName {
+  ...
+  <code class="nocode highlight">String get jsonString =&gt; JSON.encode({&quot;f&quot;: _firstName, &quot;a&quot;: _appellation});</code>
+}</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>Getter 函数使用 map 来格式化 JSON 字符串。</li>
+    </ul>
+
+  </div> </div>
+
+<div class="trydart-step-details">
+
+  <hr />
+
+  <p>定义一个顶级字符串。</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart"><code class="nocode highlight">final String TREASURE_KEY = 'pirateName';</code>
+
+void main() {
+  ...
+}</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>本地存储用的是 key-value 格式，该字符串定义了
+本地存储的 Key， 海盗的名字字符串为 value。</li>
+    </ul>
+
+  </div> </div>
+
+<div class="trydart-step-details">
+
+  <hr />
+
+  <p>当徽章名字改变的时候，保存海盗的名字。</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">void setBadgeName(PirateName newName) {
+  <code class="nocode highlight">if (newName == null) {
+    return;
+  }</code>
+  querySelector('#badgeName').text = newName.pirateName;
+  <code class="nocode highlight">window.localStorage[TREASURE_KEY] = newName.jsonString;</code>
+}</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>浏览器的 <code>Window</code> 提供了本地存储功能。</li>
+    </ul>
+
+    <p>  </p>
+
+  </div> </div>
+
+<div class="trydart-step-details">
+
+  <hr />
+
+  <p>添加一个名称为 <code>getBadgeNameFromStorage()</code>的顶级函数。</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">void setBadgeName(PirateName newName) {
+  ...
+}
+
+<code class="nocode highlight">PirateName getBadgeNameFromStorage() {
+  String storedName = window.localStorage[TREASURE_KEY];
+  if (storedName != null) {
+    return new PirateName.fromJSON(storedName);
+  } else {
+    return null;
+  }
+}</code></pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>该函数从本地存储中获取海盗的名字并创建
+一个 PirateName 对象。</li>
+    </ul>
+
+    <p>  </p>
+
+  </div> </div>
+
+<div class="trydart-step-details">
+  <hr />
+
+  <p>在 <code>main()</code> 函数中调用该函数。</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">void main() {
+  ...
+  <code class="nocode highlight">setBadgeName(getBadgeNameFromStorage());</code>
+}</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>从本地存储中初始化海盗名字。</li>
+    </ul>
+
+    <p>  </p>
+
+  </div> </div>
+
+<h3 id="i-classfa-fa-anchor-i--8"><i class="fa fa-anchor"> </i> 运行应用。</h3>
+
+<div class="trydart-step-details">
+
+  <p>使用菜单 <strong>File &gt; Save All</strong> 保存文件。</p>
+
+  <p>右键点击 <code>piratebadge.html</code> 文件并选择 <strong>Run in Dartium</strong> 菜单
+运行应用。</p>
+
+  <p>比较你的应用和如下是否一样。</p>
+
+  <p>点击按钮在徽章上添加一个名字。
+复制该窗口再次打开该应用。</p>
+
+  <iframe class="running-app-frame" style="height:220px;width:550px;" src="examples/5-localbadge/piratebadge.html">
+</iframe>
+
+  <h4 id="section-4">问题？</h4>
+
+  <p>如果遇到问题，把你的代码和<code>5-localbadge</code>中的代码比较。</p>
+
+  <ul>
+    <li>
+      <p><a href="https://github.com/dart-lang/one-hour-codelab/blob/master/web/5-localbadge/piratebadge.html">piratebadge.html</a></p>
+    </li>
+    <li>
+      <p><a href="https://github.com/dart-lang/one-hour-codelab/blob/master/web/5-localbadge/piratebadge.dart">piratebadge.dart</a></p>
+    </li>
+  </ul>
+
+</div>
+
+<hr />
+
+<h2 id="step-six">Step 6: 从 JSON 格式文件中读取名字</h2>
+
+<p>在该步骤中，将修改 PirateName 类
+从一个 JSON 文件中获取海盗名字和称呼。
+这样可以方便在添加更多的
+名字和称呼。</p>
+
+<h3 id="i-classfa-fa-anchor-i--piratenamesjson"><i class="fa fa-anchor"> </i> 创建 piratenames.json.</h3>
+
+<div class="trydart-step-details">
+  <p>使用菜单 <strong>File &gt; New File…</strong> 来创建一个名称为
+ <code>piratenames.json</code> 的文件，内容如下。</p>
+
+  <p>把该文件放到 <code>1-blankbadge</code> 中的位置（或者你正在修改的代码目录下）。</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">{ &quot;names&quot;: [ &quot;Anne&quot;, &quot;Bette&quot;, &quot;Cate&quot;, &quot;Dawn&quot;,
+            &quot;Elise&quot;, &quot;Faye&quot;, &quot;Ginger&quot;, &quot;Harriot&quot;,
+            &quot;Izzy&quot;, &quot;Jane&quot;, &quot;Kaye&quot;, &quot;Liz&quot;,
+            &quot;Maria&quot;, &quot;Nell&quot;, &quot;Olive&quot;, &quot;Pat&quot;,
+            &quot;Queenie&quot;, &quot;Rae&quot;, &quot;Sal&quot;, &quot;Tam&quot;,
+            &quot;Uma&quot;, &quot;Violet&quot;, &quot;Wilma&quot;, &quot;Xana&quot;,
+            &quot;Yvonne&quot;, &quot;Zelda&quot;,
+            &quot;Abe&quot;, &quot;Billy&quot;, &quot;Caleb&quot;, &quot;Davie&quot;,
+            &quot;Eb&quot;, &quot;Frank&quot;, &quot;Gabe&quot;, &quot;House&quot;,
+            &quot;Icarus&quot;, &quot;Jack&quot;, &quot;Kurt&quot;, &quot;Larry&quot;,
+            &quot;Mike&quot;, &quot;Nolan&quot;, &quot;Oliver&quot;, &quot;Pat&quot;,
+            &quot;Quib&quot;, &quot;Roy&quot;, &quot;Sal&quot;, &quot;Tom&quot;,
+            &quot;Ube&quot;, &quot;Val&quot;, &quot;Walt&quot;, &quot;Xavier&quot;,
+            &quot;Yvan&quot;, &quot;Zeb&quot;],
+  &quot;appellations&quot;: [ &quot;Awesome&quot;, &quot;Black&quot;, &quot;Captain&quot;, &quot;Damned&quot;,
+            &quot;Even&quot;, &quot;Fighter&quot;, &quot;Great&quot;, &quot;Hearty&quot;,
+            &quot;Irate&quot;, &quot;Jackal&quot;, &quot;King&quot;, &quot;Lord&quot;,
+            &quot;Mighty&quot;, &quot;Noble&quot;, &quot;Old&quot;, &quot;Powerful&quot;,
+            &quot;Quick&quot;, &quot;Red&quot;, &quot;Stalwart&quot;, &quot;Tank&quot;,
+            &quot;Ultimate&quot;, &quot;Vicious&quot;, &quot;Wily&quot;, &quot;aXe&quot;,
+            &quot;Young&quot;, &quot;Zealot&quot;,
+            &quot;Angry&quot;, &quot;Brave&quot;, &quot;Crazy&quot;, &quot;Damned&quot;,
+            &quot;Eager&quot;, &quot;Fool&quot;, &quot;Greedy&quot;, &quot;Hated&quot;,
+            &quot;Idiot&quot;, &quot;Jinxed&quot;, &quot;Kind&quot;, &quot;Lame&quot;,
+            &quot;Maimed&quot;, &quot;Naked&quot;, &quot;Old&quot;, &quot;Pale&quot;,
+            &quot;Queasy&quot;, &quot;Rat&quot;, &quot;Sandy&quot;, &quot;Tired&quot;,
+            &quot;Ugly&quot;, &quot;Vile&quot;, &quot;Weak&quot;, &quot;Xeric&quot;,
+            &quot;Yellow&quot;, &quot;Zesty&quot;]}</pre>
+</div>
+
+<div class="trydart-filename">piratenames.json</div>
+
+</div> <div class="col-md-5">
+
+    <p><i class="fa fa-key key-header"> </i> <strong> 关键信息 </strong></p>
+
+    <ul>
+      <li>该文件包含了一个 JSON 格式的 map 数据，
+map 中有两个字符串列表。</li>
+    </ul>
+
+  </div> </div>
+
+<h3 id="i-classfa-fa-anchor-i--piratebadgehtml-2"><i class="fa fa-anchor"> </i> 编辑 piratebadge.html.</h3>
+
+<div class="trydart-step-details">
+  <p>禁用输入框和按钮。</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-html">...
+  &lt;div&gt;
+    &lt;input type=&quot;text&quot; id=&quot;inputName&quot; maxlength=&quot;15&quot; <code class="nocode highlight">disabled</code>&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;button id=&quot;generateButton&quot; <code class="nocode highlight">disabled</code>&gt;Aye! Gimme a name!&lt;/button&gt;
+  &lt;/div&gt;
+...</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.html</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>当成功的从 JSON 文件中读取到数据后
+Dart 代码将启用
+输入框和按钮。</li>
+    </ul>
+
+  </div> </div>
+
+<h3 id="i-classfa-fa-anchor-i--piratebadgedart-3"><i class="fa fa-anchor"> </i> 编辑 piratebadge.dart.</h3>
+
+<div class="trydart-step-details">
+
+  <p>在代码顶部添加一个导入语句。</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">import 'dart:html';
+import 'dart:math' show Random;
+import 'dart:convert' show JSON;
+
+<code class="nocode highlight">import 'dart:async' show Future;</code></pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>
+        <p><code>dart:async</code> 库提供了对异步编程的支持。</p>
+      </li>
+      <li>
+        <p><code>Future</code> 提供了从未来得到数据的方式。</p>
+      </li>
+    </ul>
+
+  </div> </div>
+
+<div class="trydart-step-details">
+
+  <hr />
+
+  <p>使用静态的空列表替代 <code>names</code> 和 <code>appellations</code> ：</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">class PirateName {
+  ...
+  <code class="nocode highlight">static List&lt;String&gt; names = [];
+  static List&lt;String&gt; appellations = [];</code>
+  ...
+}</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>
+        <p><strong>确定记得删除 <code>final</code> 修饰符。</strong></p>
+      </li>
+      <li>
+        <p><code>[]</code> 等价于 <code>new List()</code>.</p>
+      </li>
+      <li>
+        <p>List 是一个  <em>generic(泛型)</em> 类型— 一个 List 可以包含任意类型的对象。
+如果你想让一个 List 只包含 String，
+则可以这样定义 <code>List&lt;String&gt;</code>。</p>
+      </li>
+    </ul>
+
+  </div> </div>
+
+<div class="trydart-step-details">
+
+  <hr />
+
+  <p>在 PirateName 类中添加两个静态函数：</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">class PirateName {
+  ...
+
+  <code class="nocode highlight">static Future readyThePirates() {
+    var path = 'piratenames.json';
+    return HttpRequest.getString(path)
+        .then(_parsePirateNamesFromJSON);
+  }
+  
+  static _parsePirateNamesFromJSON(String jsonString) {
+    Map pirateNames = JSON.decode(jsonString);
+    names = pirateNames['names'];
+    appellations = pirateNames['appellations'];
+  }</code>
+}</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>
+        <p><code>HttpRequest</code> 是从 URL 获取数据的工具类。</p>
+      </li>
+      <li>
+        <p><code>getString()</code> 是发起一个 GET 请求并返回结果为
+字符串的函数。</p>
+      </li>
+      <li>
+        <p>代码中用 <code>Future</code> 来执行异步 GET 到的结果。</p>
+      </li>
+      <li>
+        <p>当 Future 成功的完成后会
+调用回调函数 <code>.then()</code>。</p>
+      </li>
+      <li>
+        <p>当 Future 成功的完成后，
+将会从 JSON 文件中获取到海盗的名字。</p>
+      </li>
+      <li>
+        <p><code>readyThePirates</code> 函数返回一个 Future，这样主程序
+在读取该文件后就有机会继续干其他任务。</p>
+      </li>
+    </ul>
+
+  </div> </div>
+
+<div class="trydart-step-details">
+  <hr />
+
+  <p>添加一个顶级变量。</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart"><code class="nocode highlight">SpanElement badgeNameElement;</code>
+
+void main() {
+  ...
+}</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>保存 Span 元素可以重复使用而不是每次都从 DOM 中查询。</li>
+    </ul>
+
+  </div> </div>
+
+<div class="trydart-step-details">
+  <hr />
+
+  <p>在 <code>main()</code> 函数中修改相关代码。</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">void main() {
+  <code class="nocode highlight">InputElement inputField = querySelector('#inputName');
+  inputField.onInput.listen(updateBadge);</code>
+  genButton = querySelector('#generateButton');
+  genButton.onClick.listen(generateBadge);
+  
+  <code class="nocode highlight">badgeNameElement = querySelector('#badgeName');</code>
+  ...
+}</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>保存 Span 元素为全局变量，
+同时保存输入框变量为局部变量。</li>
+    </ul>
+
+  </div> </div>
+
+<div class="trydart-step-details">
+  <hr />
+
+  <p>然后从 JSON 文件中读取数据，
+并处理成功和失败的情况。</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">void main() {
+  ...
+  
+<code class="nocode highlight">  PirateName.readyThePirates()
+    .then((_) {
+      //on success
+      inputField.disabled = false; //enable
+      genButton.disabled = false;  //enable</code>
+      setBadgeName(getBadgeNameFromStorage());
+    <code class="nocode highlight">})
+    .catchError((arrr) {
+      print('Error initializing pirate names: $arrr');
+      badgeNameElement.text = 'Arrr! No names.';
+    });</code>
+}</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>
+        <p>调用 <code>readyThePirates()</code> 函数会
+返回一个 Future。</p>
+      </li>
+      <li>
+        <p>当 Future 成功完成后，
+将调用 <code>then()</code> 回调函数。</p>
+      </li>
+      <li>
+        <p>使用下划线 (<code>_</code>) 作为参数名称，
+则参数将会被忽略掉。</p>
+      </li>
+      <li>
+        <p>回调函数启用 UI 并
+获取保存的名字。</p>
+      </li>
+      <li>
+        <p>如果 Future 遇到了问题，会触发
+ <code>catchError</code> 回调函数，
+ 程序然后显示一个错误信息，
+ 并保持 UI 不可用。</p>
+      </li>
+      <li>
+        <p><code>then()</code> 和 <code>catchError</code> 回调函数定义为内联函数。</p>
+      </li>
+    </ul>
+
+  </div> </div>
+
+<h3 id="i-classfa-fa-anchor-i--9"><i class="fa fa-anchor"> </i> 运行应用。</h3>
+
+<div class="trydart-step-details">
+
+  <p>使用菜单 <strong>File &gt; Save All</strong> 保存文件。</p>
+
+  <p>右键点击 <code>piratebadge.html</code> 文件并选择 <strong>Run in Dartium</strong> 菜单
+运行应用。</p>
+
+  <p>如果你想看看当找不到 <code>.json</code> 文件时会出现啥情况，
+改变该文件的名字并再次运行该应用。</p>
+
+  <p>把你的代码和最后一步的代码比较下，并运行。</p>
+
+  <iframe class="running-app-frame" style="height:220px;width:550px;" src="examples/6-piratebadge/piratebadge.html">
+</iframe>
+
+  <h4 id="section-5">问题？</h4>
+
+  <p>如果遇到问题把你的代码和 <code>6-piratebadge</code>中的代码比较下。</p>
+
+  <ul>
+    <li>
+      <p><a href="https://github.com/dart-lang/one-hour-codelab/blob/master/web/6-piratebadge/piratebadge.html">piratebadge.html</a></p>
+    </li>
+    <li>
+      <p><a href="https://github.com/dart-lang/one-hour-codelab/blob/master/web/6-piratebadge/piratebadge.dart">piratebadge.dart</a></p>
+    </li>
+  </ul>
+
+</div>
+
+<h3 id="i-classfa-fa-anchor-i--10"><i class="fa fa-anchor"> </i> 分享您的海盗名字。</h3>
+
+<div class="trydart-step-details">
+
+  <p>来分享下你的海盗名字吧。</p>
+
+  <p class="share-button twitter">
+<a href="https://twitter.com/share" class="twitter-share-button external-link" data-count="none" data-text="Arrr! I've generated me pirate name and learnt Dart, to boot. http://dartlang.org/darrrt" data-hashtags="dartlang">Tweet</a>
+ </p>
+
+  <wb:share-button appkey="3wn9s7" addition="number" type="button" default_text="我通过学习Dart语言制作了一个海盗徽章，快来围观吧！" ralateuid="3908541102" picture_search="false"></wb:share-button>
+</div>
+
+<h2 id="step-seven">Step 7: Build 该应用并作为 JavaScript 运行</h2>
+
+<p>在该步骤中，使用 <code>pub build</code>来
+生成该 应用的 资源，并把这些资源反倒
+一个名字为  <code>build</code> 的目录中。</p>
+
+<p>Build 过程中的其他任务可以生成一个
+优化过的 JavaScript 文件，可以在
+其他浏览器中运行应用。</p>
+
+<p>注意 <code>one-hour-codelab</code> 目录包含
+了几个子目录，每个子目录对应
+一个步骤中的代码，
+这些目录都是 one-hour-codelab 应用
+的一部分。
+Build 过程会为每个目录分别生成其 资源。
+每个目录都可以单独部署运行。</p>
+
+<h3 id="i-classfa-fa-anchor-i--pubspecyaml"><i class="fa fa-anchor"> </i> 查看 pubspec.yaml</h3>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+
+      <p>双击 <code>pubspec.yaml</code> 文件打开。
+在编辑面板底部选择 <strong>Source</strong> tab。</p>
+
+      <pre class="prettyprint lang-dart">name: avast_ye_pirates
+description: Write a Dart web app code lab
+dependencies:
+  <code class="nocode highlight">browser: any</code></pre>
+
+    </div>
+
+<div class="trydart-filename">pubspec.yaml</div>
+
+</div> <div class="col-md-5">
+
+    <p><i class="fa fa-key key-header"> </i> <strong> 关键信息 </strong></p>
+
+    <ul>
+      <li>
+        <p>A <code>pubspec.yaml</code> file in a directory identifies the directory
+and its contents as an application.</p>
+      </li>
+      <li>
+        <p><code>pubspec.yaml</code> provides meta-data for the application,
+such as its name.</p>
+      </li>
+      <li>
+        <p>The <code>pubspec.yaml</code> file also lists the libraries on which the app depends.
+The <code>browser</code> library needed by this app is hosted on
+<a href="https://pub.dartlang.org/">pub.dartlang.org</a> along with many others.</p>
+      </li>
+      <li>
+        <p><code>any</code> selects the latest package that matches your SDK.</p>
+      </li>
+    </ul>
+
+  </div></div>
+
+<h3 id="i-classfa-fa-anchor-i-look-at-the-packages-directory"><i class="fa fa-anchor"> </i> Look at the packages directory</h3>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+
+      <p>In Dart Editor, expand the <code>packages</code> directory.</p>
+
+      <p><img src="images/packagesfiles.png" alt="Packages contains the code for the package dependencies" /></p>
+
+    </div>
+
+</div> <div class="col-md-5">
+
+    <p><i class="fa fa-key key-header"> </i> <strong> Key Information </strong></p>
+
+    <ul>
+      <li>
+        <p>The <code>packages</code> directory contains the code for all of the dependencies
+listed in the <code>pubspec.yaml</code> file.
+These are installed automatically by Dart Editor.</p>
+      </li>
+      <li>
+        <p>The <code>browser</code> package contains the <code>dart.js</code> script
+that checks for native Dart support.</p>
+      </li>
+      <li>
+        <p>The packages must be included in the built application
+in order for the app to be successfully deployed.</p>
+      </li>
+    </ul>
+
+  </div></div>
+
+<h3 id="i-classfa-fa-anchor-i-run-pub-build"><i class="fa fa-anchor"> </i> Run pub build</h3>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+
+      <p>Select <code>pubspec.yaml</code>
+then select <strong>Tools &gt; Pub Build</strong>,
+which builds everything under the <code>one-hour-codelab</code> directory.
+The output looks something like this:</p>
+
+      <pre class="prettyprint lang-bash">--- Jan 21, 2014 12:41:48 PM Running pub build ... ---
+Building avast_ye_pirates.....
+[Info from Dart2JS]:
+Took 0:00:01.704695 to compile avast_ye_pirates|web/1-blankbadge/piratebadge.dart.
+[Info from Dart2JS]:
+Took 0:00:05.535304 to compile avast_ye_pirates|web/2-inputnamebadge/piratebadge.dart.
+[Info from Dart2JS]:
+Took 0:00:02.974628 to compile avast_ye_pirates|web/3-buttonbadge/piratebadge.dart.
+[Info from Dart2JS]:
+Took 0:00:02.195714 to compile avast_ye_pirates|web/4-classbadge/piratebadge.dart.
+[Info from Dart2JS]:
+Took 0:00:01.938502 to compile avast_ye_pirates|web/5-localbadge/piratebadge.dart.
+[Info from Dart2JS]:
+Took 0:00:02.028974 to compile avast_ye_pirates|web/6-piratebadge/piratebadge.dart.
+Built 45 files!</pre>
+
+    </div>
+
+<div class="trydart-filename">terminal</div>
+
+</div> <div class="col-md-5">
+
+    <p><i class="fa fa-key key-header"> </i> <strong> Key Information </strong></p>
+
+    <ul>
+      <li>
+        <p>The <code>pub build</code> command creates a <code>build</code> directory that contains
+subdirectories for every step in the code lab.</p>
+      </li>
+      <li>
+        <p>The <code>build</code> directory contains everything needed to deploy the
+entire project (all six steps).</p>
+      </li>
+    </ul>
+
+  </div></div>
+
+<h3 id="i-classfa-fa-anchor-i-look-at-the-build-directory"><i class="fa fa-anchor"> </i> Look at the <code>build</code> directory</h3>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+
+      <p>Expand the <code>build</code> directory.
+Note that it contains a subdirectory for each step of the code lab.
+Expand the <code>6-piratebadge</code> directory.</p>
+
+      <p><img src="images/builddir.png" alt="The build directory contains everything you need to deploy." /></p>
+    </div>
+
+</div> <div class="col-md-5">
+
+    <p><i class="fa fa-key key-header"> </i> <strong> Key Information </strong></p>
+
+    <ul>
+      <li>
+        <p>The <code>piratebadge.dart.js</code> file is a JavaScript file that has been minified.
+When deployed, this file runs in the browser.</p>
+      </li>
+      <li>
+        <p>The <code>packages</code> directory contains the package dependencies.</p>
+      </li>
+      <li>
+        <p>Note that the directory contains no <code>piratebadge.dart</code> file.
+It is not needed to deploy the app to JavaScript.</p>
+      </li>
+      <li>
+        <p>Each subdirectory of <code>build</code> contains all of the files
+needed for the app to be deployed separately.</p>
+      </li>
+    </ul>
+
+  </div></div>
+
+<h3 id="i-classfa-fa-anchor-i-run-the-app-as-javascript"><i class="fa fa-anchor"> </i> Run the app as JavaScript</h3>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+
+      <p>Right click the <code>piratebadge.html</code> file
+and choose <strong>Run as JavaScript</strong> from the menu.
+Copy the URL and run the app in Firefox or Safari.</p>
+
+    </div>
+
+</div> <div class="col-md-5">
+
+    <p><i class="fa fa-key key-header"> </i> <strong> 关键信息 </strong></p>
+
+    <ul>
+      <li>该应用在本地运行，
+如果你想和其他人分享，则
+需要部署到一个服务器上去。</li>
+    </ul>
+
+  </div></div>
+
+<hr />
+
+<h2 id="whatnext">接下来干啥？</h2>
+
+<p>Now that you’ve written your app, what do you do now? Here are some suggestions.</p>
+
+<h3 id="i-classfa-fa-anchor-i-deploy-a-server-and-your-app"><i class="fa fa-anchor"> </i> Deploy a server and your app</h3>
+
+<div class="trydart-step-details">
+
+  <p>If you are interested in server-side programming,
+you can learn to write a static file server and use it to deploy
+the pirate badge app to Heroku.
+Check out the <a href="/codelabs/deploy/">Weigh Anchor: Deploy a Server and App</a> code lab.</p>
+
+</div>
+
+<h3 id="i-classfa-fa-anchor-i-check-out-the-samples"><i class="fa fa-anchor"> </i> Check out the samples.</h3>
+
+<div class="trydart-step-details">
+
+  <p>Run some Dart programs online and check out the source code
+on our <a href="/samples/">Samples page</a>.</p>
+</div>
+
+<h3 id="i-classfa-fa-anchor-i-read-the-tutorials"><i class="fa fa-anchor"> </i> Read the tutorials.</h3>
+
+<div class="trydart-step-details">
+  <p>Learn more about Dart from
+the <a href="/docs/tutorials/">Dart tutorials</a>.</p>
+</div>
+
+<hr />
+
+<h2 id="resources">Summary and resources</h2>
+
+<h3 id="i-classfa-fa-anchor-i--11"><i class="fa fa-anchor"> </i> 回顾下你都学会了那些内容！</h3>
+
+<div class="trydart-step-details">
+
+  <p>该代码实验室提供了对 Dart 语音和很多库特性的
+一个概览。
+下面深入学习的资料。</p>
+
+  <h4 id="dart-">Dart 语言</h4>
+
+  <p><a href="/docs/dart-up-and-running/contents/ch02.html">
+Dart 语言简介</a>
+告诉你如何使用 Dart 语言的所有主要特性，
+从变量到操作符、从类到库。
+本代码实验室中介绍了如下 Dart 语言特性，
+所有的特性在 语言简介 中都会有详细的介绍。</p>
+
+  <ul>
+    <li>字符串插值 (<code>'$_firstName the $_appellation'</code>)</li>
+    <li>级联操作符 (<code>..</code>)</li>
+    <li>胖箭头 (<code>=&gt;</code>) 函数语法</li>
+    <li>三元操作符 (<code>?:</code>)</li>
+    <li>命名构造函数 (<code>PirateName.fromJSON(...)</code>)</li>
+    <li>可选参数</li>
+    <li>类</li>
+    <li>getters 函数</li>
+    <li>实例变量和函数</li>
+    <li>类变量和函数</li>
+    <li>顶级变量和函数</li>
+    <li>使用 <code>as</code> 关键字来转换对象 (<code>(e.target as InputElement)</code>) </li>
+    <li>import和 <code>show</code> 关键字 (<code>import 'dart:math' show Random;</code>)</li>
+    <li>泛型</li>
+    <li>streams (<code>inputField.onInput.listen(...);</code>)</li>
+    <li>futures (<code>HttpRequest.getString(path).then(...);</code>)</li>
+  </ul>
+</div>
+
+<h3 id="i-classfa-fa-anchor-i--12"><i class="fa fa-anchor"> </i> 在线文档</h3>
+
+<div class="trydart-step-details">
+
+  <h4 id="dart--1">Dart 库</h4>
+
+  <p><a href="/docs/dart-up-and-running/contents/ch03.html">
+Dart 库简介</a>
+介绍了如何使用 Dart 库的主要特性。</p>
+
+  <h4 id="api-">类的 API 文档</h4>
+
+  <p><a href="https://api.dartlang.org/dart_core/String.html" target="_blank">String</a>,
+<a href="https://api.dartlang.org/dart_core/List.html" target="_blank">List</a>,
+<a href="https://api.dartlang.org/dart_core/Map.html" target="_blank">Map</a>,
+<a href="https://api.dartlang.org/dart_math/Random.html" target="_blank">Random</a>,
+<a href="https://api.dartlang.org/dart_html/InputElement.html" target="_blank">InputElement</a>,
+<a href="https://api.dartlang.org/dart_html/ButtonElement.html" target="_blank">ButtonElement</a>,
+<a href="https://api.dartlang.org/dart_html/Event.html" target="_blank">Event</a>,
+<a href="https://api.dartlang.org/dart_html/HttpRequest.html" target="_blank">HttpRequest</a>, and
+<a href="https://api.dartlang.org/dart_async/Future.html" target="_blank">Future</a>,  and
+<a href="https://api.dartlang.org/dart_async/Stream.html" target="_blank">Stream</a>.</p>
+
+  <h4 id="api--1">库的 API 文档</h4>
+
+  <p><a href="https://api.dartlang.org/dart_core.html" target="_blank">dart:core</a>,
+<a href="https://api.dartlang.org/dart_math.html" target="_blank">dart:math</a>,
+<a href="https://api.dartlang.org/dart_html.html" target="_blank">dart:html</a>,
+<a href="https://api.dartlang.org/dart_async.html" target="_blank">dart:async</a>, and
+<a href="https://api.dartlang.org/dart_convert.html" target="_blank">dart:convert</a></p>
+
+  <h4 id="json--api-">JSON 和本地存储的 API 文档</h4>
+
+  <p><a href="https://api.dartlang.org/dart_html/Window.html#localStorage" target="_blank">LocalStorage</a>, and
+<a href="https://api.dartlang.org/dart_convert.html#JSON" target="_blank">JSON</a></p>
+
+</div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+  <footer class="footer container-full">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <h3>一种用于创建可扩展 web 应用程序的语言、工具和代码库</h3>
+          <p>Dart 是一个 <a href="https://code.google.com/p/dart/">开源项目</a>，由  Google 和其他人员参与。</p>
+          <p class="sm">除非注明，该页面内容使用 the Creative Commons Attribution 3.0 License 发布，示例代码使用  BSD License 发布。</p>
+          <!-- 
+          <p><a class="saelogo" href="http://sae.sina.com.cn/activity/invite/15649/weibo" target="_blank"><img src="http://static.sae.sina.com.cn/image/poweredby/poweredby.png" title="Powered by Sina App Engine"></a></p>     	
+          -->
+        </div>
+        <div class="col-md-2 col-md-offset-1">
+          <h4>受欢迎的文章</h4>
+          <ul>
+            <li><a href="/polymer-dart/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Polymer.dart</a></li>
+            <li><a href="/performance/">性能</a></li>
+            <li><a href="/docs/dart-up-and-running/contents/ch02.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">语言概览</a> &amp;
+            <a href="/docs/dart-up-and-running/contents/ch03.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">代码库概览</a></li>
+            <li><a href="/samples/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">示例代码</a></li>
+            <li><a href="/docs/tutorials/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">教程</a> &amp;
+                <a href="/codelabs/darrrt/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">代码实验室</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>资源</h4>
+          <ul>
+            <li><a href="http://pub.dartlang.org/">Pub packages</a></li>
+            <li><a href="/docs/synonyms/">和其他语言的相同点</a></li>
+            <li><a href="http://code.google.com/p/dart/issues/list">Dart bugs and feature requests</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>社区</h4>
+          <ul>
+            <li><a href="/support/">邮件列表</a></li>
+            <li><a href="http://forum.dartlang.cc">中文社区</a></li>
+            <li><a href="http://weibo.com/cndart">中文微博</a></li>
+            <li><a href="https://plus.google.com/communities/114566943291919232850">G+ 社区</a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts">G+ 新闻发布频道</a></li>
+            <li><a href="http://stackoverflow.com/questions/tagged/dart">Stack Overflow</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer> <!-- End footer -->
+	    
+    <!-- jQuery -->
+    <script src="./js/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="./js/bootstrap.min.js"></script>
+	<script src="./js/ripples.min.js"></script>
+    <script src="./js/material.min.js"></script>
+    <script src="./plugin/highlight/highlight.pack.js"></script>
+    <script>
+        $(document).ready(function() {
+            // This command is used to initialize some elements and make them work properly
+            $.material.init();
+            hljs.initHighlightingOnLoad();
+        });
+    </script>
+</body>
+
+</html>

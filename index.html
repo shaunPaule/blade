@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Blade,简洁强大的javaweb框架">
+    <meta name="author" content="biezhi">
+
+    <title>Blade - 简洁强大的javaweb框架</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+	<link href="./css/roboto.min.css" rel="stylesheet">
+    <link href="./css/material.min.css" rel="stylesheet">
+    <link href="./css/ripples.min.css" rel="stylesheet">
+	<!-- Custom styles for this template -->
+    <link href="./css/style.css" rel="stylesheet">
+    <link href="./plugin/highlight/styles/github.css" rel="stylesheet">
+	
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+	<!-- Fixed navbar -->
+    <nav class="navbar navbar-info navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Blade</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">入门</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">文档 <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">教程</a></li>
+                <li><a href="./dart-by-example.html">Blade示例</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="./docs/index.html">开发者指南</a></li>
+                <li><a href="./apidocs/index.html">API参考</a></li>
+                <li><a href="#">语言规范</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">工具 <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">下载&nbsp;Blade</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Eclipse</a></li>
+                <li><a href="#">工具FAQ</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">资源 <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">示例代码</a></li>
+                <li><a href="#">性能</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Blade 短视频</a></li>
+              </ul>
+            </li>
+            <li><a href="#contact">支持</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="../navbar/"><i class="sprite-icon-social-twitter"></i>&nbsp;&nbsp;</a></li>
+            <li><a href="../navbar-static-top/"><i class="sprite-icon-social-gplus"></i>&nbsp;&nbsp;</a></li>
+            <li><a href="../navbar/"><i class="sprite-icon-social-weibo"><img src="./img/weibo.png"></i>&nbsp;&nbsp;</a></li>
+            <li class="active"><a href="./">置顶<span class="sr-only">(current)</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+	
+	<div class="container-page">
+	    <div class="container-full hero-hldr">
+	      <div class="hero container">
+	        <div class="row">
+	          <div class="col-md-10 col-md-offset-1">
+	            <h1>Blade 是一个用来建构<br>Java Web 应用的新平台。</h1>
+	            <ul>
+	              <li>工具包</li>
+	              <li>Restful</li>
+	              <li>可配置</li>
+	              <li>简洁</li>
+	            </ul>
+	            <div class="editor download-buttons" style="display: block;">
+				  <div class="downloads">
+				  	<iframe src="http://ghbtns.com/github-btn.html?user=biezhi&repo=blade&type=watch&count=true"
+      allowtransparency="true" frameborder="0" scrolling="0" width="110px" height="20px"></iframe>
+      				<iframe src="http://ghbtns.com/github-btn.html?user=biezhi&repo=blade&type=fork&count=true"
+      allowtransparency="true" frameborder="0" scrolling="0" width="95px" height="20px"></iframe>
+      
+				  </div>
+				</div>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+
+	    <div class="container-full sub-hero-hldr">
+	      <div id="feed-posts" class="sub-hero container">
+	      	<p>当前 blade最新版本： <a href="http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.bladejava%22" target="_blank">1.2.7-alpha</a></p>
+	      </div>
+	    </div>
+	
+	    <div class="container blade-container">
+	      
+	      <section class="blade-ctas">
+	        <div class="row">
+	          <div class="col-md-10 col-md-offset-1">
+	            <div class="row">
+	              <div class="col-md-4">
+	                <h2>了解下 Blade</h2>
+	                <p class="timer"><i class="sprite-icon-timer"></i>大约 5 分钟</p>
+	                <p>Blade 是基于类的和面向对象的、非教条式的web框架。</p>
+	                <a id="see-code" href="#code" data-slide="true"><i class="sprite-icon-triangle"></i>了解代码</a>
+	              </div>
+	              <div class="col-md-4">
+	                <h2>试用下 Blade</h2>
+	                <p class="timer"><i class="sprite-icon-timer"></i>大约 1 小时</p>
+	                <p>编写一个 Blade web 程序 - 即使你以前从未编写过 web 程序。</p>
+	                <a href="./start.html"><i class="sprite-icon-triangle"></i>编写代码</a>
+	              </div>
+	              <div class="col-md-4">
+	                <h2>深入了解</h2>
+	                <p class="timer"><i class="sprite-icon-timer"></i>大约 1 天</p>
+	                <p>Dart 有很多 <a href="#tools">工具</a>、
+	                <a href="#libraries">代码库</a>、以及文档和
+	                                                         一个开发者社区</p>
+	                <a href="/docs/"><i class="sprite-icon-triangle"></i>了解更多</a>
+	              </div>
+	            </div>
+	          </div>
+	        </div>
+	      </section>
+		  
+	      <section class="blade-new-language sec-shadow" id="code">
+	      	
+	        <div class="row">
+	          <div class="col-md-10 col-md-offset-1">
+	            <h2>Blade 是新且非常熟悉的</h2>
+	            <div id="blade-language-carousel" class="carousel slide blade-carousel" data-interval="false">
+	              <!-- Indicators -->
+	              <ol class="carousel-indicators">
+	                <li data-target="#blade-language-carousel" data-slide-to="0" class="active">易于学习</li>
+	                <li data-target="#blade-language-carousel" data-slide-to="1">简洁的</li>
+	                <li data-target="#blade-language-carousel" data-slide-to="2">可配置的</li>
+	                <li data-target="#blade-language-carousel" data-slide-to="3">模块化的</li>
+	              </ol>
+	              
+	              <!-- Wrapper for slides -->
+	              <div class="carousel-inner">
+	                <div class="item active">
+	                  <p>你可能已经见过甚至编写过 Blade 代码。 <a href="/samples/">查看更多示例。</a> </p>
+	                  <div class="code-hldr">
+	                  	<pre><code class="java">public class App extends BladeApplication{
+	
+    Logger logger = Logger.getLogger(App.class);
+    @Override
+    public void init() {
+        // register router
+        Blade.regRoute("/hello", SayHi.class, "hello");
+
+        // anonymous router，java8 so simple
+        Blade.get("/get", new RouteHandler() {
+            @Override
+            public String run(Request request, Response response) {
+                System.out.println("come get!!");
+                System.out.println(request.query("name"));
+                return "get";
+            }
+        });
+    }
+}</code></pre>
+						</div>
+	                </div>
+	                <div class="item">
+	                  <p>写的少。干的多。</p>
+	                  <div class="code-hldr">
+	                  <pre><code class="java">public User getByUid(Integer uid) {
+	// 根据主键查询User
+	return model.select().fetchByPk(uid);
+}
+
+public List<User> getList(String nickname, String email, Integer status, String order) {
+	// 根据条件查询User列表
+	return model.select().like("nickname", "%" + nickname).like("email", "%" + email)
+		.where("status", status).orderBy(order).fetchList();
+}
+
+// 登录方法
+public User login(String email, String password) {
+	if(StringKit.isNotBlank(email) && StringKit.isNotBlank(password)){
+		String pwd = EncrypUtil.md5(email + password);
+		return model.select()
+			.where("email", email).where("password", pwd)
+			.where("is_admin", 1).where("status", 1).fetchOne();
+	}
+	return null;
+}</code></pre>
+	                  </div>
+	                </div>
+	                <div class="item">
+	                  <p>硬编码方式，配置文件(Properties)配置，JSON方式配置，多种方式任你选择！</p>
+	                  <div class="code-hldr">
+						<pre><code class="java">@Override
+public void init() {
+	
+	Blade.config("blade.properties");
+	
+	// 设置模板引擎
+	BeetlRender beetlRender = new BeetlRender();
+	
+	Blade.viewEngin(beetlRender);
+	
+	// 配置数据库插件
+	Sql2oPlugin.INSTANCE.autoConfig().run();
+}
+
+// 配置文件
+blade.dburl=jdbc:mysql://127.0.0.1:3306/test
+blade.dbdriver=com.mysql.jdbc.Driver
+blade.dbuser=root
+blade.dbpass=root
+...				
+</code></pre>
+	                  </div>
+	                </div>
+	                <div class="item">
+	                  <p>以Blade-Core为核心扩展其他组件</p>
+	                  <div class="code-hldr" style="text-align: center;">  
+	  					<img src="img/modular.png" width="400" height="400">
+	                  </div>
+	                </div>
+	              </div>
+	            </div>
+	
+	          </div>
+	        </div>
+	      </section>
+	      
+	      <section class="blade-libraries">
+	        <div class="row">
+	          <div class="col-md-10 col-md-offset-1" id="libraries">
+	            <h2>Blade强大的基础功能供你使用</h2>
+	
+	            <div id="blade-libraries-carousel" class="carousel slide blade-carousel" data-interval="false">
+	              <!-- Indicators -->
+	              <ol class="carousel-indicators">
+	                <li data-target="#blade-libraries-carousel" data-slide-to="0" class="active">字符处理</li>
+	                <li data-target="#blade-libraries-carousel" data-slide-to="1">邮件发送</li>
+	                <li data-target="#blade-libraries-carousel" data-slide-to="2">任务分发</li>
+	                <li data-target="#blade-libraries-carousel" data-slide-to="3">HTTP请求</li>
+	              </ol>
+	              <!-- Wrapper for slides -->
+	              <div class="carousel-inner">
+	                <div class="item active">
+	                  <p>每个应用都可以使用 Dart 核心类库提供的 lists、 sets、和 maps。</p>
+	                  <div class="code-hldr"> 
+	                  	<pre><code class="java">//判断是否为空
+String str = "hello";
+System.out.println(StringKit.isNotEmpty(str));
+
+//分割字符串
+String[] arr = StringKit.split("1,2,3", ",");
+System.out.println(Arrays.toString(arr));
+
+//生成5个随机字符串
+System.out.println(StringKit.random(5));
+
+//将字符串20转换为long类型，如果为null或者空则给一个默认值10
+System.out.println(StringKit.toLong("20", 10));
+
+List<Integer> list = new ArrayList<Integer>();
+list.add(22);
+list.add(30);
+//将集合用指定字符分隔
+String listString = StringKit.join(list, "|");
+System.out.println(listString);</code></pre>
+	                  </div>
+	                </div>
+	                <div class="item">
+	                  <p>blade-kit中的MailKit实现了基本发送邮件，异步发送，抄送，发送带附件邮件等功能。</p>
+	                  <div class="code-hldr">
+	                  	<pre><code class="java">// 发送方配置，邮箱帐号和密码
+MailKit.config(MailKit.SMTP_QQ, "921293209@qq.com", "helloworld");
+
+// 测试给【xxx@qq.com】发送邮件
+MailKit.send("xxx@qq.com", "测试发送邮件", "hello");
+
+// 测试异步发送邮件
+MailKit.asynSend("xxx", "测试异步发送邮件", "hello");
+
+// 测试给【xxx@qq.com】发送邮件并抄送给xoxo@qq.com
+MailKit.sendAndCc("xxx@qq.com", "xoxo@qq.com", "测试发送邮件", "hello");
+
+// 测试给【xxx@qq.com】发送邮件并带一个附件
+MailKit.send("xxx@qq.com", "测试发送邮件", "hello", "F:/aa.txt");
+                  	
+// 使用模板给【xxx@qq.com】发送邮件并带一个附件
+try {
+	MailTemplate template = new MailTemplate("F:/a.html", "xxx@qq.com", null);
+	MailKit.send(template, "新主题");
+} catch (IOException e) {
+	e.printStackTrace();
+}</code></pre>
+		              </div>
+	                </div>
+	                <div class="item">
+	                  <p>Dart 的 HTML 库释放现代浏览器的能力， 平滑处理浏览器之间的差异。</p>
+	                  <div class="code-hldr">
+						<pre><code class="java">TaskKit.scheduleAtFixedRate(new Runnable() {
+	@Override
+	public void run() {
+		System.out.println("每隔两秒执行一次");
+	}
+}, 2);
+
+TaskKit.scheduleAtFixedRate(new Runnable() {
+	@Override
+	public void run() {
+		System.out.println("在指定的延时之后开始以固定的频率来运行任务。后续任务的启动时间不受前次任务延时影响。");
+	}
+}, 10, 3, TimeUnit.SECONDS);
+
+TaskKit.scheduleAtFixedRate(new Runnable() {
+	@Override
+	public void run() {
+		System.out.println("在指定的时间点启动，两次任务间保持固定的时间间隔");
+	}
+}, new Date(), 3, TimeUnit.SECONDS);</code></pre>
+	                  </div>
+	                </div>
+	                <div class="item">
+	                  <p>使用HttpRequest可以完成很多网络请求，我也写了几个爬虫程序，真的很简单~</p>
+	                  <div class="code-hldr">
+	                  	<pre><code class="java">// 发送一个GET请求并获取内容
+String body = HttpRequest.get("http://bladejava.com").body();
+System.out.println(body);
+
+// 发送一个带heder的请求
+String res = HttpRequest.get("http://bladejava.com").accept("application/json")
+		.userAgent("Mozilla/5.0 (Windows NT 6.1; WOW64; rv:39.0) Gecko/20100101 Firefox/39.0").body();
+System.out.println(res);
+
+// 发送一个POST请求
+HttpRequest.post("http://www.example.com").part("id", 20).part("name", "jack").body();
+
+// 带认证的请求
+int response = HttpRequest.get("http://google.com").basic("username", "p4ssw0rd").code();
+System.out.println(response);
+
+// 下载一个图片
+File file = new File("F:/a.png");
+HttpRequest.get("http://img.blog.csdn.net/20150601232126808").receive(file);</code></pre>
+	                  </div>
+	                </div>
+	              </div>
+	            </div>
+	
+	          </div>
+	        </div>
+	      </section>
+	
+	      <section class="productivity-tools sec-shadow">
+	        <div class="row">
+	          <div class="col-md-12" id="tools">
+	            <h2>Eclipse 工具帮助你提高生产力</h2>
+	            <img src="./img/eclipse.png">
+	            <p>Eclipse 是上手的最简单方式，帮助你编辑、调试、和运行 Java程序。</p>
+	          </div>
+	        </div>
+	        <div class="row">
+	          <div class="col-md-12">
+	          (更多下载选项请查看
+	           <a href="https://eclipse.org/downloads/" target="_blank">下载页面</a>。)
+	          </div>
+	        </div>
+	      </section>
+	    </div> <!-- end container -->
+  	</div>
+    
+    <footer class="footer container-full">
+	    <div class="container">
+	      <div class="row">
+	        <div class="col-md-5">
+	          <h3>一种用于快速高效开发web 应用程序的框架</h3>
+	          <p>Blade 是一个 <a href="https://github.com/biezhi/blade">开源项目</a>，由  <a href="http://my.oschina.net/biezhi" target="_blank">biezhi</a> 编写。</p>
+	          <p class="sm">除非注明，该页面内容使用 the Creative Commons Attribution 3.0 License 发布，示例代码使用  BSD License 发布。</p>
+	        </div>
+	        <div class="col-md-2 col-md-offset-1">
+	          <h4>受欢迎的文章</h4>
+	          <ul>
+	          	<li><a href="#">blade音乐系统搭建</a></li>
+	          	<li><a href="#">java-china发起者</a></li>
+	            <li><a href="#">性能</a></li>
+	          </ul>
+	        </div>
+	        <div class="col-md-2">
+	          <h4>资源</h4>
+	          <ul>
+	            <li><a href="http://pub.dartlang.org/">Eclipse下载</a></li>
+	            <li><a href="https://github.com/biezhi/blade/issues">Blade bugs and feature requests</a></li>
+	          </ul>
+	        </div>
+	        <div class="col-md-2">
+	          <h4>社区</h4>
+	          <ul>
+	            <li><a href="#">邮件列表</a></li>
+	            <li><a href="#">中文社区</a></li>
+	            <li><a href="http://weibo.com/u/5238733773">中文微博</a></li>
+	            <li><a href="http://stackoverflow.com/questions/tagged/blade">Stack Overflow</a></li>
+	          </ul>
+	        </div>
+	      </div>
+	    </div>
+	  </footer> <!-- End footer -->
+    <!-- jQuery -->
+    <script src="./js/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="./js/bootstrap.min.js"></script>
+	<script src="./js/ripples.min.js"></script>
+    <script src="./js/material.min.js"></script>
+    <script src="./plugin/highlight/highlight.pack.js"></script>
+    <script>
+        $(document).ready(function() {
+            // This command is used to initialize some elements and make them work properly
+            $.material.init();
+            hljs.initHighlightingOnLoad();
+        });
+    </script>
+</body>
+
+</html>
