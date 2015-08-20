@@ -58,8 +58,27 @@ h6 {
   white-space: nowrap;
 }
 
-nav{
-	padding-left: 15%;
+.navbar-logo a{
+	font-size: 25px;
+}
+
+.navbar-logo img{
+	width: 35px;
+	height: 35px;
+	vertical-align:middle;
+}
+
+#navbar{
+	padding-left: 40%;
+}
+
+.navbar-info.navbar{
+	background-color: #FFFFFF;
+  color: gray;
+}
+
+.navbar-nav .active{
+		border-bottom: 2px solid #0066FF;
 }
 
 .disabled-block {
