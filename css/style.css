@@ -438,13 +438,6 @@ h6 {
   -webkit-transform: translateZ(0);
 }
 
-@media (max-width: 992px) {
-  .footer {
-    position: relative;
-    height: auto;
-  }
-}
-
 .footer h3 {
   font: 400 17px/24px 'Montserrat', sans-serif;
   text-transform: uppercase;
@@ -468,7 +461,7 @@ h6 {
 }
 
 .footer p.sm {
-  font-size: 9px;
+  font-size: 12px;
   line-height: 16px;
 }
 
@@ -479,7 +472,7 @@ h6 {
 .footer ul {
   list-style: none;
   padding-left: 0;
-  font-size: 11px;
+  font-size: 12px;
   line-height: 16px;
 }
 
@@ -490,7 +483,7 @@ h6 {
 
 .footer ul > li > a {
   color: #fff;
-  font-size: 11px;
+  font-size: 12px;
   line-height: 16px;
 }
 
