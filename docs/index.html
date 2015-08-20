@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Blade,简洁强大的javaweb框架">
     <meta name="author" content="biezhi">
+	<link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
     <title>Blade - 简洁强大的javaweb框架</title>
     <!-- Bootstrap Core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -357,8 +358,84 @@ public class Hello {
 								</ul></li>
 								<li>Rest风格的路由配置，一定适合你的口味！</li>
 							</ul>
-		
 							</dd>
+						</dl>
+						
+						<dl>
+							<dt>函数式路由</dt>
+							<dd>
+								函数式路由用起来真的很酷
+								<pre><code class="java">Blade.regRoute("/", IndexRoute.class, "index");
+Blade.regRoute("/hi", IndexRoute.class, "hi");
+Blade.regRoute("/signin", IndexRoute.class, "post:signin");
+Blade.regRoute("/delete", IndexRoute.class, "delete", HttpMethod.DELETE);</code></pre>
+								
+								配置路由的方式很简单，下面看看对应的`IndexRoute`类
+								<pre><code class="java">// 路由
+public class IndexRoute {
+
+	// 返回首页界面
+	public String index(){
+		return "index";
+	}
+	
+	// hi请求
+	public void hi(Request request, Response response){
+		System.out.println("进入hello!");
+		System.out.println(request.query("name"));
+	}
+
+        // signin请求
+	public void signin(Request request, Response response){
+		System.out.println("进入signin!");
+	}
+
+        // delete请求
+	public void delete(Request request, Response response){
+		System.out.println("进入delete!");
+	}
+}</code></pre>
+							</dd>
+						</dl>
+						
+						<dl>
+							<dt>回调式路由</dt>
+							<dd>
+								从blade1.6版本开始支持了基本的RESTful函数式路由。最简单的blade路由由URI和闭包函数组成，如果你使用Java8那就再爽不过了。
+								<strong>基本GET路由</strong>
+								<pre><code class="java">Blade.get("/", new Handler(){
+  public String run(Request req, Response res){
+    //do some
+  }
+});</code></pre>
+								<strong>基本POST路由</strong>
+								<pre><code class="java">Blade.post("/signin", new Handler(){
+  public String run(Request req, Response res){
+    //do some
+  }
+});</code></pre>
+								<strong>注册一个可以响应任何HTTP的路由</strong>
+								<pre><code class="java">Blade.all("/hello", new Handler(){
+  public String run(Request req, Response res){
+    //do some
+  }
+});</code></pre>
+								
+								<strong>所有的支持的基础函数如下所示</strong>
+								<pre><code class="java">Blade.get(path, CallBack);
+Blade.post(path, CallBack);
+Blade.delete(path, CallBack);
+Blade.put(path, CallBack);
+Blade.patch(path, CallBack);
+Blade.head(path, CallBack);
+Blade.trace(path, CallBack);
+Blade.options(path, CallBack);
+Blade.connect(path, CallBack);
+Blade.all(path, CallBack);</code></pre>
+
+								
+							</dd>
+							
 						</dl>
 						
 						<h4 id="section-interceptor">拦截器设置</h4>
