@@ -433,13 +433,117 @@ Blade.options(path, CallBack);
 Blade.connect(path, CallBack);
 Blade.all(path, CallBack);</code></pre>
 
+								<strong>如何操作请求和响应</strong>
+								<ul>
+									<li>在路由方法上你可以定义Request和Response参数由框架自动注入</li>
+									<li>Request处理请求，对HttpServletRequest进行了封装</li>
+									<li>Response处理响应，对HttpServletResponse进行了封装</li>
+								</ul>
 								
+								<strong>Route的其他概念</strong>
+								对于<code>POST</code>,<code>GET</code>,<code>DELETE</code>等请求的配置就用到`method`了，
+								使用非常简单：
+								<p><code>@Route(value = "/post", method = HttpMethod.POST)</code></p>
+								嗯 没错 就是这么easy！！
+
+								下面是<code>acceptType</code>，这个一般用不到，如果你限制请求类型的话配置一下即可，
+								以前的做法就是用HttpServletRequest对象控制。
+								
+								<strong>如何输出到页面？</strong>
+								想到大家应该比较关心这个了，<code>blade</code>框架内置了JSP渲染，
+								所以你看到的<code>return "hello.jsp"</code>代码是可以返回到<code>hello.jsp</code>文件上的。
+								当然<code>blade</code>还支持类似spring的<code>ModelAndView</code>，怎么使用呢，
+								<pre><code class="java">@Route("model")
+public void model() {
+    return new ModelAndView("model.jsp");
+}</code></pre>
+								
+								喏，很简单吧。什么意思呢？
+								<code>ModelAndView</code>是一个视图模型对象，在spring里出现，里面也就是存放视图和数据而已，
+								你可以看它的源码，用<code>Map</code>存放数据，<code>String</code>变量存放视图文件。
+								
+								应该没有花你多长时间，看来接受<code>blade</code>是非常快速的！
 							</dd>
 							
 						</dl>
 						
 						<h4 id="section-interceptor">拦截器设置</h4>
+						<p>
+							拦截器在Spring中是一个惯用的编程手段，在<code>blade</code>中也存在拦截器，功能简化一些。
+							<pre><code class="java">@Interceptor
+public class BaseInterceptor {
+	
+	TimwMonitor monitor = TimwManager.getTimerMonitor();
+	
+	@Before("/*")
+	public void before(Request request, Response response){
+		
+		System.out.println("before...");
+		monitor.start();
+		
+		request.attribute("base", request.contextPath());
+		request.attribute("static_v", "20150722");
+		
+		User login_user = request.session().attribute(Constant.LOGIN_SESSION);
+	}
+	
+	@After("/*")
+	public void after(){
+		System.out.println("after...");
+		monitor.end();
+		monitor.render();
+		monitor.renderAvg();
+	}
+}</code></pre>
+							在<code>1.2.6</code>版本之后支持函数式注册拦截器，写法如下：
+							<pre><code class="java">// 注册拦截器
+Blade.regInterceptor("/*", Interceptor.class, "before");
+```
+拦截器类
+```java
+public class Interceptor {
+
+	public void before(Request request, Response response){
+		System.out.println("before...");
+		
+		request.attribute("base", request.contextPath());
+		request.attribute("static_v", "20150722");
+		
+		User login_user = request.session().attribute(Constant.LOGIN_SESSION);
+	}
+}</code></pre>
+						</p>
+						
 						<h4 id="section-requestdata">请求数据处理</h4>
+						<p>
+							<h3>获取参数</h3>
+							<p>我们经常需要获取用户传递的数据，包括Get、POST等方式的请求，blade里面会自动解析这些数据，你可以通过如下方式获取数据：</p>
+							使用Request对象的方法
+							<pre><code class="java">request.query("");
+request.queryToInt("");
+request.queryToDouble("");
+request.queryToFloat("");
+request.queryToBoolean("");
+request.queryToLong("");</code></pre>
+							使用例子如下：
+							<pre><code class="java">// hi请求
+public void hi(Request request){
+    System.out.println(request.query("name"));
+}</code></pre>
+							更多其他的<code>request</code>的信息，用户可以通过<code>request</code>获取信息，关于该对象的属性和方法参考手册<a href="">Request</a>。
+
+							<h3>获取path上的参数</h3>
+							在REST风格的URL路径上，我们的配置是类似于<code>/user/:uid</code>酱紫的。
+							那么如何获取呢？blade的request对象提供了如下方法，使用很简单
+							<pre><code class="java">request.pathParam("");
+request.pathParamToInt("");
+request.pathParamToLong("");</code></pre>
+								
+							<h3>获取 Request Body 里的内容</h3>
+							在 开发API的时候，我们经常会用到<code>JSON</code>或<code>XML</code>来作为数据交互的格式，
+							如何在<code>blade</code>中获取<code>Request Body</code>里的<code>JSON</code>或<code>XML</code>的数据呢？
+							<h3>文件上传</h3>
+						</p>
 						<h4 id="section-session">session控制</h4>
 						<h4 id="section-outdata">多种数据输出</h4>
 						<h4 id="section-log">日志处理</h4>
